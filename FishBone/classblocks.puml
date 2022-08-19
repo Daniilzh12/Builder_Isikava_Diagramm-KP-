@@ -1,0 +1,78 @@
+@startuml
+class com.daniilzyravlev.fishbone.blocks.Block {
++ ArrayList<DragListener> listeners
+# TextField blockText
++ String text
+# double width
+# double height
+# Point2D point
++ double pX
++ double pY
++ BlockType type
+- double mouseAnchorX
+- double mouseAnchorY
++ void draw()
++ double getHeight()
++ double getWidth()
++ Point2D getPosition()
++ double minY()
++ double maxY()
++ double maxX()
++ ArrayList<Point2D> getArrayOfMinMaxPoints()
+}
+class com.daniilzyravlev.fishbone.blocks.Problem {
++ void draw()
+}
+class com.daniilzyravlev.fishbone.blocks.Bone {
++ double width
++ double height
+# Point2D point
+~ TextField Header
++ String headerText
++ double pX
++ double pY
++ BlockType type
++ void updateText()
++ void draw()
++ double getHeight()
++ double getWidth()
++ double minY()
++ double minX()
++ double maxY()
++ double maxX()
++ Point2D getPoint(Block)
+}
+class com.daniilzyravlev.fishbone.blocks.Area {
++ void draw()
+}
+class com.daniilzyravlev.fishbone.blocks.Connection {
+- Line line
++ Block block
+- {static} double arrowLength
+- {static} double arrowWidth
++ double getStartX()
++ DoubleProperty startXProperty()
++ double getStartY()
++ DoubleProperty startYProperty()
++ double getEndX()
++ DoubleProperty endXProperty()
++ double getEndY()
++ DoubleProperty endYProperty()
++ Point2D getMinPoint(Block)
+}
+enum com.daniilzyravlev.fishbone.blocks.BlockType {
++  STANDARD
++  BONE
++  PROBLEM
+}
+
+
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.blocks.Block
+javafx.scene.Group <|-- com.daniilzyravlev.fishbone.blocks.Block
+com.daniilzyravlev.fishbone.blocks.Block <|-- com.daniilzyravlev.fishbone.blocks.Problem
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.blocks.Bone
+javafx.scene.Group <|-- com.daniilzyravlev.fishbone.blocks.Bone
+com.daniilzyravlev.fishbone.blocks.Block <|-- com.daniilzyravlev.fishbone.blocks.Area
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.blocks.Connection
+javafx.scene.Group <|-- com.daniilzyravlev.fishbone.blocks.Connection
+@enduml

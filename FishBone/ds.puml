@@ -1,0 +1,25 @@
+@startuml
+class com.daniilzyravlev.fishbone.BlockList {
+- List<Block> blocks
+~ DragListener onDrag
++ List<Block> getBlocks()
++ Block setBlock(BlockType,Point2D,String)
+}
+class com.daniilzyravlev.fishbone.Connections {
+- List<Connection> connections
++ List<Connection> getConnections()
+}
+class com.daniilzyravlev.fishbone.HelloApplication {
++ void start(Stage)
++ {static} void main(String[])
+}
+class com.daniilzyravlev.fishbone.PointLiner {
++ X item1
++ Y item2
+}
+
+
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.BlockList
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.Connections
+javafx.application.Application <|-- com.daniilzyravlev.fishbone.HelloApplication
+@enduml

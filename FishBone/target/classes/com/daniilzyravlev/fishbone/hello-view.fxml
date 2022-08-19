@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniilzyravlev.fishbone.HelloController">
+   <center>
+       <ScrollPane fx:id="root" prefHeight="495.0" prefWidth="522.0" BorderPane.alignment="CENTER">
+           <AnchorPane fx:id="workSpace" minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="519.0"/>
+       </ScrollPane>
+   </center>
+    <right/>
+   <top>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="Файл">
+               <MenuItem mnemonicParsing="false" text="Импорт" onAction="#importDiagram"/>
+               <MenuItem mnemonicParsing="false" text="Экспорт" onAction="#exportDiagram"/>
+               <MenuItem mnemonicParsing="false" text="Быстрый экспорт в png" onAction="#saveImage"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Изменить">
+               <MenuItem mnemonicParsing="false" text="Очистить" onAction="#clearArea"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Помощь">
+               <MenuItem mnemonicParsing="false" text="О программе" onAction="#About"/>
+           </Menu>
+       </MenuBar>
+   </top>
+   <left>
+       <ToolBar orientation="VERTICAL" prefHeight="495.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <Button fx:id="blockText" onAction="#BlockClick" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Область"/>
+           <Button fx:id="problemText" onAction="#ProblemClick" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Причина"/>
+           <ToggleButton fx:id="cleaner" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Удалитель"/>
+       </ToolBar>
+   </left>
+</BorderPane>

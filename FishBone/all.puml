@@ -1,0 +1,129 @@
+@startuml
+class com.daniilzyravlev.fishbone.BlockList {
+- List<Block> blocks
+~ DragListener onDrag
++ List<Block> getBlocks()
++ Block setBlock(BlockType,Point2D,String)
+}
+class com.daniilzyravlev.fishbone.Connections {
+- List<Connection> connections
++ List<Connection> getConnections()
+}
+class com.daniilzyravlev.fishbone.HelloApplication {
++ void start(Stage)
++ {static} void main(String[])
+}
+class com.daniilzyravlev.fishbone.blocks.Connection {
+- Line line
++ Block block
+- {static} double arrowLength
+- {static} double arrowWidth
++ double getStartX()
++ DoubleProperty startXProperty()
++ double getStartY()
++ DoubleProperty startYProperty()
++ double getEndX()
++ DoubleProperty endXProperty()
++ double getEndY()
++ DoubleProperty endYProperty()
++ Point2D getMinPoint(Block)
+}
+interface com.daniilzyravlev.fishbone.DragListener {
+~ void onDrag()
+}
+class com.daniilzyravlev.fishbone.blocks.Block {
++ ArrayList<DragListener> listeners
+# TextField blockText
++ String text
+# double width
+# double height
+# Point2D point
++ double pX
++ double pY
++ BlockType type
+- double mouseAnchorX
+- double mouseAnchorY
++ void draw()
++ double getHeight()
++ double getWidth()
++ Point2D getPosition()
++ double minY()
++ double maxY()
++ double maxX()
++ ArrayList<Point2D> getArrayOfMinMaxPoints()
+}
+class com.daniilzyravlev.fishbone.blocks.Problem {
++ void draw()
+}
+class com.daniilzyravlev.fishbone.blocks.Bone {
++ double width
++ double height
+# Point2D point
+~ TextField Header
++ String headerText
++ double pX
++ double pY
++ BlockType type
++ void updateText()
++ void draw()
++ double getHeight()
++ double getWidth()
++ double minY()
++ double minX()
++ double maxY()
++ double maxX()
++ Point2D getPoint(Block)
+}
+class com.daniilzyravlev.fishbone.HelloController {
++ Button blockText
+- FileChooser explorer
++ ToggleButton cleaner
++ AnchorPane workSpace
++ ScrollPane root
+~ Connections connections
+~ Bone bone
+~ Connections miniConnections
+~ BlockList blockList
++ void initialize(URL,ResourceBundle)
++ void BlockClick()
++ void ProblemClick()
+- void drawShape(Block)
+- void drawConnections()
+- void drawMiniConnections()
+- void drawMiniConnection(Block)
+- PointLiner<Point2D,Point2D> getMiniArrowPoints(Block)
+- void drawConnection(Block)
+- PointLiner<Point2D,Point2D> getArrowPoints(Block)
++ void About()
++ void saveImage()
++ void exportDiagram()
++ void importDiagram()
++ void clearArea()
+}
+class com.daniilzyravlev.fishbone.blocks.Area {
++ void draw()
+}
+enum com.daniilzyravlev.fishbone.blocks.BlockType {
++  STANDARD
++  BONE
++  PROBLEM
+}
+class com.daniilzyravlev.fishbone.PointLiner {
++ X item1
++ Y item2
+}
+
+
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.BlockList
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.Connections
+javafx.application.Application <|-- com.daniilzyravlev.fishbone.HelloApplication
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.blocks.Connection
+javafx.scene.Group <|-- com.daniilzyravlev.fishbone.blocks.Connection
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.blocks.Block
+javafx.scene.Group <|-- com.daniilzyravlev.fishbone.blocks.Block
+com.daniilzyravlev.fishbone.blocks.Block <|-- com.daniilzyravlev.fishbone.blocks.Problem
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.blocks.Bone
+javafx.scene.Group <|-- com.daniilzyravlev.fishbone.blocks.Bone
+javafx.fxml.Initializable <|.. com.daniilzyravlev.fishbone.HelloController
+com.daniilzyravlev.fishbone.blocks.Block <|-- com.daniilzyravlev.fishbone.blocks.Area
+@enduml

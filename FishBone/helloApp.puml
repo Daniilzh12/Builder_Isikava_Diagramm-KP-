@@ -1,0 +1,9 @@
+@startuml
+class com.daniilzyravlev.fishbone.HelloApplication {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+
+javafx.application.Application <|-- com.daniilzyravlev.fishbone.HelloApplication
+@enduml

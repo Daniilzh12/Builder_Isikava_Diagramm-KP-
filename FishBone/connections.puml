@@ -1,0 +1,9 @@
+@startuml
+class com.daniilzyravlev.fishbone.Connections {
+- List<Connection> connections
++ List<Connection> getConnections()
+}
+
+
+java.io.Serializable <|.. com.daniilzyravlev.fishbone.Connections
+@enduml

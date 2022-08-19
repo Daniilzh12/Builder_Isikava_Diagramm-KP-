@@ -1,0 +1,6 @@
+@startuml
+class com.daniilzyravlev.fishbone.PointLiner {
++ X item1
++ Y item2
+}
+@enduml

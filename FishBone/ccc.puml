@@ -1,0 +1,31 @@
+@startuml
+class com.daniilzyravlev.fishbone.HelloController {
++ Button blockText
+- FileChooser explorer
++ ToggleButton cleaner
++ AnchorPane workSpace
++ ScrollPane root
+~ Connections connections
+~ Bone bone
+~ Connections miniConnections
+~ BlockList blockList
++ void initialize(URL,ResourceBundle)
++ void BlockClick()
++ void ProblemClick()
+- void drawShape(Block)
+- void drawConnections()
+- void drawMiniConnections()
+- void drawMiniConnection(Block)
+- PointLiner<Point2D,Point2D> getMiniArrowPoints(Block)
+- void drawConnection(Block)
+- PointLiner<Point2D,Point2D> getArrowPoints(Block)
++ void About()
++ void saveImage()
++ void exportDiagram()
++ void importDiagram()
++ void clearArea()
+}
+
+
+javafx.fxml.Initializable <|.. com.daniilzyravlev.fishbone.HelloController
+@enduml
